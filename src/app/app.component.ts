@@ -14,9 +14,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.log.error('Esto es un error');
-    this.log.warn('Esto es un warn');
-    this.log.info('Esto es un info');
-    this.log.log('Esto es un log');
+    // this.log.error('Esto es un error');
+    // this.log.warn('Esto es un warn');
+    // this.log.info('Esto es un info');
+    // this.log.log('Esto es un log');
   }
 }

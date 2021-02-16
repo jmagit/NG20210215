@@ -5,8 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainModule } from './main';
-import { AubayCoreModule, LoggerService } from 'src/aubay-core';
+import { AubayCoreModule, ERROR_LEVEL, LoggerService } from 'src/aubay-core';
 import { CommonAppModule } from './common-app/common-app.module';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CommonAppModule } from './common-app/common-app.module';
     AppRoutingModule, AubayCoreModule, MainModule, CommonAppModule
   ],
   providers: [
-    LoggerService
+    LoggerService,
+    { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
   ],
   bootstrap: [AppComponent]
 })
