@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainModule } from './main';
-import { AubayCoreModule } from 'src/aubay-core';
+import { AubayCoreModule, LoggerService } from 'src/aubay-core';
 import { CommonAppModule } from './common-app/common-app.module';
 
 @NgModule({
@@ -16,7 +16,9 @@ import { CommonAppModule } from './common-app/common-app.module';
     BrowserModule, FormsModule,
     AppRoutingModule, AubayCoreModule, MainModule, CommonAppModule
   ],
-  providers: [],
+  providers: [
+    LoggerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
