@@ -9,9 +9,9 @@ import { LoggerService } from 'src/aubay-core';
 export class AppComponent implements OnInit {
   title = 'Hola Mundo';
 
-  constructor(private log: LoggerService) {
+  // constructor(private log: LoggerService) {
 
-  }
+  // }
 
   ngOnInit(): void {
     // this.log.error('Esto es un error');
