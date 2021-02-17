@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SizerComponent } from './components/aubay-sizer.component';
 
 
 
@@ -7,7 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule
   ],
-  declarations: [],
-  exports: [],
+  declarations: [SizerComponent, ],
+  exports: [SizerComponent, ],
 })
 export class AubayCoreModule { }
