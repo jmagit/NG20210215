@@ -21,7 +21,7 @@ export class DemosComponent implements OnInit, OnDestroy {
   resultado: string = null;
   visible = true;
   estetica = { importante: true, error: false, urgente: true };
-  fontSize = 14;
+  fontSize = 24;
 
   private suscriptor: Unsubscribable;
 

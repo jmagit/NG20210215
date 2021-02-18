@@ -47,6 +47,7 @@ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil magni itaque vol
   <button type="button" (click)="cargar()">Cargar</button>
 </p>
 
-<p>
+<aubay-sizer (sizeChange)="fontSize = $event;" ></aubay-sizer>
+<p [style.font-size.px]="fontSize">
   {{ listado | json }}
 </p>
