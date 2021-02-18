@@ -9,8 +9,8 @@ import { HomeComponent } from '../home/home.component';
 })
 export class DinamicoComponent implements OnInit {
   menu = [
-    {texto: 'Inicio', componete: HomeComponent},
     {texto: 'Demo', componete: DemosComponent},
+    {texto: 'Inicio', componete: HomeComponent},
   ];
   actual = this.menu[0].componete;
 

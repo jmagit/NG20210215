@@ -33,10 +33,18 @@ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil magni itaque vol
     <button type="button" (click)="selecciona(ind)">Cargar</button>
   </li>
 </ul>
+<form #miForm="ngForm">
 <p>
-  id: {{elemento.id}}<br>
-  provincia: <input type="text" [(ngModel)]="elemento.nombre">
+  id: <input type="number" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel" required><br>
+  provincia: <input type="text" id="nombre" name="nombre" [(ngModel)]="elemento.nombre" #nombre="ngModel" required minlength="2" maxlength="15"><br>
+  superficie: <input type="number" id="superficie" name="superficie" [(ngModel)]="elemento.superficie" #superficie="ngModel"><br>
+  pais: <input type="text" id="pais" name="pais" [(ngModel)]="elemento.pais" #pais="ngModel" minlength="2" maxlength="15"><br>
 </p>
+<p>
+  <button type="button" (click)="enviar()" [disabled]="miForm.invalid">enviar</button>
+</p>
+</form>
+
 <p>
   <select [(ngModel)]="idProvincia" >
     <option value="">--Elige opción--</option>
