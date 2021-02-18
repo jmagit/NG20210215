@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SizerComponent } from './components/aubay-sizer.component';
+import { PIPES_CADENAS } from './pipes/cadenas.pipe';
 
 
 
@@ -8,7 +9,7 @@ import { SizerComponent } from './components/aubay-sizer.component';
   imports: [
     CommonModule
   ],
-  declarations: [SizerComponent, ],
-  exports: [SizerComponent, ],
+  declarations: [SizerComponent, PIPES_CADENAS, ],
+  exports: [SizerComponent, PIPES_CADENAS, ],
 })
 export class AubayCoreModule { }

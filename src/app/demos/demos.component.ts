@@ -10,11 +10,12 @@ import { NotificationService, NotificationType } from '../common-services';
 export class DemosComponent implements OnInit, OnDestroy {
   private nombre: string = 'mundo';
   listado = [
-    {id: 1, nombre: 'Madrid'},
-    {id: 2, nombre: 'BARCELONA'},
-    {id: 3, nombre: 'bilbao'},
-    {id: 4, nombre: 'A coruñA'},
-  ];
+      {id: 1, nombre: 'Madrid'},
+      {id: 2, nombre: 'BARCELONA'},
+      {id: 3, nombre: 'bilbao'},
+      {id: 4, nombre: 'A coruñA'},
+    ];
+  elemento = {id: null, nombre: ''};
   idProvincia = 2;
 
   resultado: string = null;
@@ -46,6 +47,12 @@ export class DemosComponent implements OnInit, OnDestroy {
     this.visible = !this.visible;
     this.estetica.importante = !this.estetica.importante;
     this.estetica.error = !this.estetica.error;
+  }
+  public cargar(): void {
+    this.listado = JSON.parse('[ { "id": 1, "nombre": "Madrid" }, { "id": 2, "nombre": "BARCELONAaaa" }, { "id": 3, "nombre": "bilbaosss" }, { "id": 4, "nombre": "A coruñAsss" } ]');
+  }
+  public selecciona(indice: number): void {
+    this.elemento = this.listado[indice];
   }
 
   calcula(a: any, b: any): number { return a + b; }
