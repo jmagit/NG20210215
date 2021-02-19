@@ -59,8 +59,6 @@
       maxlength="15" >
       <span class="error" [hidden]="!pais.errors?.minlength && !pais.errors?.maxlength">Debe tener entre 2 y 15 letras.</span>
       {{pais.errors | json}}
-      <br>
-
   </p>
   <p>
     <button type="button" (click)="enviar()" [disabled]="miForm.invalid">enviar</button>
@@ -81,3 +79,11 @@
 <p [style.font-size.px]="fontSize">
   {{ listado | json }}
 </p>
+<p>
+  <button (click)="remoto()">Pedir</button>
+</p>
+<ul>
+  <li *ngFor="let item of recibido">
+    {{item.titulo}}
+  </li>
+</ul>

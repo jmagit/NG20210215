@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { CommonServicesModule } from './common-services';
 import { DemosComponent } from './demos/demos.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
     DinamicoComponent
   ],
   imports: [
-    BrowserModule, FormsModule,
+    BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, AubayCoreModule, MainModule, CommonServicesModule
   ],
   providers: [

@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Unsubscribable } from 'rxjs';
+import { LoggerService } from 'src/aubay-core';
 import { NotificationService, NotificationType } from '../common-services';
 
 @Component({
@@ -23,10 +25,11 @@ export class DemosComponent implements OnInit, OnDestroy {
   estetica = { importante: true, error: false, urgente: true };
   fontSize = 24;
   modo = 'add';
+  recibido: any[] = [];
 
   private suscriptor: Unsubscribable;
 
-  constructor(public vm: NotificationService) { }
+  constructor(public vm: NotificationService, private http: HttpClient, private out: LoggerService) { }
 
   public get Nombre(): string { return this.nombre; }
   public set Nombre(valor: string)  {
@@ -80,5 +83,13 @@ export class DemosComponent implements OnInit, OnDestroy {
 
   enviar(): void {
     alert(JSON.stringify(this.elemento));
+  }
+
+  remoto() {
+    this.http.get<any[]>('http://localhost:4321/api/libros')
+      .subscribe(
+        datos => this.recibido = datos,
+        error => this.vm.add(error.message)
+      );
   }
 }
