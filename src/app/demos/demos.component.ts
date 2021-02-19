@@ -22,6 +22,7 @@ export class DemosComponent implements OnInit, OnDestroy {
   visible = true;
   estetica = { importante: true, error: false, urgente: true };
   fontSize = 24;
+  modo = 'add';
 
   private suscriptor: Unsubscribable;
 
@@ -53,6 +54,7 @@ export class DemosComponent implements OnInit, OnDestroy {
   }
   public selecciona(indice: number): void {
     this.elemento =  this.listado[indice];
+    this.modo = 'edit';
   }
 
   calcula(a: any, b: any): number { return a + b; }

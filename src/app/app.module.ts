@@ -9,14 +9,12 @@ import { AubayCoreModule, ERROR_LEVEL, LoggerService } from 'src/aubay-core';
 import { environment } from 'src/environments/environment';
 import { CommonServicesModule } from './common-services';
 import { DemosComponent } from './demos/demos.component';
-import { HomeComponent } from './home/home.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemosComponent,
-    HomeComponent,
     DinamicoComponent
   ],
   imports: [

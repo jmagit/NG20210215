@@ -2,15 +2,15 @@
 
 <p>
   <input type="text" [(ngModel)]="Nombre">
-  <input type="button" value="saluda" (click)="saluda()" >
-  <input type="button" value="despide" (click)="despide()" >
-  <input type="button" value="di algo" (click)="di('algo')" >
-  <input type="button" value="cambia" (click)="cambia()" >
+  <input type="button" value="saluda" (click)="saluda()">
+  <input type="button" value="despide" (click)="despide()">
+  <input type="button" value="di algo" (click)="di('algo')">
+  <input type="button" value="cambia" (click)="cambia()">
   <input type="button" value="Error" (click)="vm.add('Esto es una notifica
- ción de error')" >
+ ción de error')">
   <input type="button" value="Warn" (click)="vm.add('Esta notificación es
- un aviso', vm.NotificationType.warn)" >
- </p>
+ un aviso', vm.NotificationType.warn)">
+</p>
 <p [textContent]="resultado">Esto se pierde</p>
 <p [innerHTML]="resultado">Esto se pierde</p>
 
@@ -18,7 +18,8 @@
 <p *ngIf="visible">Ahora existo</p>
 
 <p [ngClass]="estetica">
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil magni itaque voluptate quas a minus nobis! Fugiat quae dolorem laboriosam. Illum suscipit enim repudiandae aspernatur corrupti, ad eum soluta consequatur!
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil magni itaque voluptate quas a minus nobis! Fugiat quae
+  dolorem laboriosam. Illum suscipit enim repudiandae aspernatur corrupti, ad eum soluta consequatur!
 </p>
 <p [class.semivisible]="!visible">Ahora estoy al 100%</p>
 
@@ -34,19 +35,40 @@ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil magni itaque vol
   </li>
 </ul>
 <form #miForm="ngForm">
-<p>
-  id: <input type="number" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel" required><br>
-  provincia: <input type="text" id="nombre" name="nombre" [(ngModel)]="elemento.nombre" #nombre="ngModel" required minlength="2" maxlength="15"><br>
-  superficie: <input type="number" id="superficie" name="superficie" [(ngModel)]="elemento.superficie" #superficie="ngModel"><br>
-  pais: <input type="text" id="pais" name="pais" [(ngModel)]="elemento.pais" #pais="ngModel" minlength="2" maxlength="15"><br>
-</p>
-<p>
-  <button type="button" (click)="enviar()" [disabled]="miForm.invalid">enviar</button>
-</p>
+  <p>
+    código:
+    <ng-container *ngIf="modo === 'add'">
+    <input type="number" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel" required>
+    <span class="error" [hidden]="!id.errors?.required || miForm.pristine">Es obligatorio</span>
+    </ng-container>
+    <ng-container *ngIf="modo !== 'add'">
+      {{elemento.id}}
+    </ng-container>
+      <br>
+    provincia: <input type="text" id="nombre" name="nombre" [(ngModel)]="elemento.nombre" #nombre="ngModel" required
+      minlength="2" maxlength="15" uppercase>
+    <span class="error" [hidden]="!nombre.hasError('required')">Es obligatorio</span>
+    <span class="error" [hidden]="!nombre.errors?.minlength && !nombre.errors?.maxlength">Debe tener entre 2 y 15 letras.</span>
+    {{nombre.errors | json}}
+    <br>
+    superficie: <input type="number" id="superficie" name="superficie" [(ngModel)]="elemento.superficie"
+      #superficie="ngModel" min=1>
+      <span class="error" [hidden]="!superficie.errors?.min">Es muy pequeño, al menos debe ser 1.</span>
+      <br>
+    pais: <input type="text" id="pais" name="pais" [(ngModel)]="elemento.pais" #pais="ngModel" minlength="2"
+      maxlength="15" >
+      <span class="error" [hidden]="!pais.errors?.minlength && !pais.errors?.maxlength">Debe tener entre 2 y 15 letras.</span>
+      {{pais.errors | json}}
+      <br>
+
+  </p>
+  <p>
+    <button type="button" (click)="enviar()" [disabled]="miForm.invalid">enviar</button>
+  </p>
 </form>
 
 <p>
-  <select [(ngModel)]="idProvincia" >
+  <select [(ngModel)]="idProvincia">
     <option value="">--Elige opción--</option>
     <option *ngFor="let p of listado" [value]="p.id">{{p.nombre | capitalize}}</option>
   </select>
@@ -55,7 +77,7 @@ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil magni itaque vol
   <button type="button" (click)="cargar()">Cargar</button>
 </p>
 
-<aubay-sizer (sizeChange)="fontSize = $event;" ></aubay-sizer>
+<aubay-sizer (sizeChange)="fontSize = $event;"></aubay-sizer>
 <p [style.font-size.px]="fontSize">
   {{ listado | json }}
 </p>
